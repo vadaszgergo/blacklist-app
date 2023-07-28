@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IP Blacklist Generator</title>
+</head>
+<body>
+    <h1>IP Blacklist Generator</h1>
+    <form method="post">
+        <h2>IPv4 Whitelist:</h2>
+        <textarea name="whitelist_ipv4" rows="10" cols="50" placeholder="Enter IPv4 ranges to whitelist (one per line)"></textarea>
+        <br>
+        <h2>IPv6 Whitelist:</h2>
+        <textarea name="whitelist_ipv6" rows="10" cols="50" placeholder="Enter IPv6 ranges to whitelist (one per line)"></textarea>
+        <br>
+        <input type="submit" value="Generate Blacklist">
+    </form>
+
+    {% if whitelist_ipv4 %}
+    <h2>IPv4 Whitelisted Ranges:</h2>
+    <ul>
+        {% for ip_range in whitelist_ipv4 %}
+            <li>{{ ip_range }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if whitelist_ipv6 %}
+    <h2>IPv6 Whitelisted Ranges:</h2>
+    <ul>
+        {% for ip_range in whitelist_ipv6 %}
+            <li>{{ ip_range }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if blacklist_ipv4 %}
+    <h2>Generated IPv4 Blacklist:</h2>
+    <ul>
+        {% for ip_range in blacklist_ipv4 %}
+            <li>{{ ip_range }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if blacklist_ipv6 %}
+    <h2>Generated IPv6 Blacklist:</h2>
+    <ul>
+        {% for ip_range in blacklist_ipv6 %}
+            <li>{{ ip_range }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>
