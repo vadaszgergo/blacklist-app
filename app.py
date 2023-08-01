@@ -30,7 +30,7 @@ def create_complementary_blacklist(whitelist):
 def index():
     if request.method == 'POST':
         whitelist_ipv4 = request.form.get('whitelist_ipv4')
-        whitelist_ipv4 = whitelist_ipv4.split('\n')
+        whitelist_ipv4 = whitelist_ipv4.split('\r\n')
         parsed_whitelist_ipv4 = [parse_ip_range(ip_range) for ip_range in whitelist_ipv4 if parse_ip_range(ip_range) is not None]
         blacklist_ipv4 = create_complementary_blacklist(parsed_whitelist_ipv4)
 
